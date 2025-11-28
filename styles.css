@@ -1,84 +1,191 @@
-/* === Estilos generales === */
+/* ============================
+   ESTILO GENERAL "RETAIL PRO"
+   ============================ */
+
+:root {
+  --ta-bg: #f4f5f7;
+  --ta-surface: #ffffff;
+  --ta-primary: #0053a9;      /* azul tipo retail */
+  --ta-primary-soft: #e3f0ff;
+  --ta-border: #d1d5db;
+  --ta-text-main: #111827;
+  --ta-text-soft: #6b7280;
+}
+
+/* Reset básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #f3f4f6;
-  color: #111827;
+  background: var(--ta-bg);
+  color: var(--ta-text-main);
+  line-height: 1.6;
 }
+
+/* ============================
+   CONTENEDOR PRINCIPAL
+   ============================ */
 
 .container {
-  max-width: 920px;
-  margin: 32px auto;
-  padding: 24px 20px 32px;
-  background: #ffffff;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
-  box-sizing: border-box;
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 32px 36px 40px;
+  background: var(--ta-surface);
+  border-radius: 12px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow:
+    0 8px 18px rgba(15, 23, 42, 0.06),
+    0 2px 4px rgba(15, 23, 42, 0.04);
 }
 
+/* ============================
+   CABECERA DE LA PÁGINA
+   ============================ */
+
 h1 {
-  font-size: 1.9rem;
-  margin-bottom: 10px;
+  font-size: 2rem;
   font-weight: 800;
-  color: #111827;
+  color: var(--ta-text-main);
+  margin-bottom: 8px;
 }
 
 .subtitle {
   font-size: 0.95rem;
-  color: #6b7280;
+  color: var(--ta-text-soft);
   margin-bottom: 22px;
 }
 
-h2 {
-  font-size: 1.25rem;
-  margin-top: 26px;
+.container::before {
+  content: "Política comercial";
+  display: inline-block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--ta-primary);
+  background: var(--ta-primary-soft);
+  padding: 4px 10px;
+  border-radius: 999px;
   margin-bottom: 10px;
-  font-weight: 700;
-  color: #111827;
 }
 
-p, li {
-  font-size: 0.98rem;
-  line-height: 1.7;
+/* línea separadora sutil bajo el header */
+h1 + .subtitle + p {
+  border-top: 1px solid var(--ta-border);
+  padding-top: 18px;
+  margin-top: 10px;
+}
+
+/* ============================
+   SUBTÍTULOS / SECCIONES
+   ============================ */
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ta-text-main);
+  margin-top: 26px;
+  margin-bottom: 10px;
+  padding-left: 12px;
+  position: relative;
+}
+
+/* barra azul a la izquierda de cada sección */
+h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  border-radius: 999px;
+  background: var(--ta-primary);
+}
+
+/* ============================
+   TEXTO Y LISTAS
+   ============================ */
+
+p {
+  font-size: 0.97rem;
   color: #374151;
   margin-bottom: 8px;
 }
 
-ul, ol {
-  margin-left: 22px;
+ul,
+ol {
+  margin-left: 1.3rem;
   margin-bottom: 14px;
+}
+
+li {
+  font-size: 0.95rem;
+  color: #374151;
+  margin-bottom: 6px;
+  position: relative;
+}
+
+/* viñeta personalizada tipo retail */
+ul li::marker {
+  content: "• ";
+  color: var(--ta-primary);
+  font-weight: 700;
 }
 
 strong {
   font-weight: 700;
-  color: #111827;
+  color: var(--ta-text-main);
 }
 
+/* ============================
+   ENLACES
+   ============================ */
+
 a {
-  color: #2563eb;
+  color: var(--ta-primary);
   text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
   font-weight: 500;
   word-break: break-all;
 }
 
-/* Caja de contacto */
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ============================
+   BLOQUE DE CONTACTO DESTACADO
+   ============================ */
 
 .contacto {
   margin-top: 14px;
-  padding: 12px;
+  padding: 14px 16px;
   background: #f9fafb;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  border: 1px solid var(--ta-border);
 }
 
-/* === Responsive === */
+.contacto strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ============================
+   RESPONSIVE (MÓVIL)
+   ============================ */
 
 @media (max-width: 768px) {
   .container {
-    margin: 16px;
-    padding: 18px 14px 24px;
+    margin: 20px 12px;
+    padding: 22px 16px 26px;
+    border-radius: 10px;
   }
 
   h1 {
@@ -86,10 +193,12 @@ a {
   }
 
   h2 {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
+    padding-left: 10px;
   }
 
-  p, li {
-    font-size: 0.94rem;
+  p,
+  li {
+    font-size: 0.9rem;
   }
 }
